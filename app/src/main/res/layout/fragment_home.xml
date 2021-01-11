@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+        <variable
+            name="viewModel"
+            type="com.example.videogamesapplication.ui.home.HomeViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.home.HomeFragment">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.05">
+        </androidx.constraintlayout.widget.Guideline>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.7">
+        </androidx.constraintlayout.widget.Guideline>
+
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/searchViewHome"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="8dp"
+            app:searchIcon="@drawable/ic_video_game_search"
+            app:queryHint="@string/search_hint"
+            app:iconifiedByDefault="false"
+            app:layout_constraintEnd_toEndOf="@id/guideline_2"
+            app:layout_constraintStart_toStartOf="@id/guideline_1"
+            app:layout_constraintTop_toTopOf="parent">
+        </androidx.appcompat.widget.SearchView>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayoutViewPager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/searchViewHome">
+
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/viewpager"
+                style="@style/viewPager"
+                android:layout_marginHorizontal="8dp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintBottom_toTopOf="@id/pageIndicatorView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+            </androidx.viewpager.widget.ViewPager>
+
+            <com.rd.PageIndicatorView
+                android:id="@+id/pageIndicatorView"
+                style="@style/pageIndicator"
+                android:layout_marginTop="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/viewpager"
+                app:piv_animationType="thinWorm"
+                app:piv_count="3"
+                app:piv_dynamicCount="true"
+                app:piv_interactiveAnimation="true"
+                app:piv_padding="7dp"
+                app:piv_radius="4dp"
+                app:piv_selectedColor="@color/black"
+                app:piv_unselectedColor="@color/orange"
+                app:piv_viewPager="@id/viewpager" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/constraintLayoutViewPager" />
+        <TextView
+            android:id="@+id/textViewHomeEmptySearch"
+            style="@style/textViewEmptySearch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/empty_search_title"
+            android:visibility="gone"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+        </TextView>
+        <Button
+            android:id="@+id/buttonHomeReload"
+            android:layout_width="128dp"
+            android:layout_height="64dp"
+            android:visibility="gone"
+            android:onClick="@{() -> viewModel.reloadButtonClicked()}"
+            android:background="@drawable/bg_reload"
+            android:textColor="@color/orange"
+            android:text="@string/reload_title"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+        </Button>
+
+        <TextView
+            android:id="@+id/textViewHomeReload"
+            style="@style/textViewEmptySearch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/reload_description"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@id/buttonHomeReload"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+        </TextView>
+        <ProgressBar
+            android:id="@+id/progressBarReload"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+        </ProgressBar>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

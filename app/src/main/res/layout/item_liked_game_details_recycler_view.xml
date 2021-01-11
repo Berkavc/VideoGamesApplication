@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayoutRecyclerView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/imageViewViewRecyclerView"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/ic_video_game_placeholder">
+    </ImageView>
+
+    <TextView
+        android:id="@+id/textViewGameListTitle"
+        style="@style/textViewGameListTitle"
+        android:layout_marginTop="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/imageViewViewRecyclerView"
+        app:layout_constraintTop_toTopOf="@id/imageViewViewRecyclerView"
+        tools:text="Grand Theft Auto V">
+    </TextView>
+
+    <TextView
+        android:id="@+id/textViewGameListDescription"
+        style="@style/textViewGameListDescription"
+        android:layout_marginTop="3dp"
+        app:layout_constraintStart_toStartOf="@id/textViewGameListTitle"
+        app:layout_constraintEnd_toEndOf="@id/textViewGameListTitle"
+        app:layout_constraintTop_toBottomOf="@id/textViewGameListTitle"
+        tools:text="4.5 - 2013-09-17">
+    </TextView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
